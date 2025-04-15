@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
+    
     public function index()
     {
         $currentUserId = auth()->user()->id;
+
 
         $roomsWithRelations = Room::with([
             'lastMessage.user',

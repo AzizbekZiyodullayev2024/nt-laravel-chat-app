@@ -206,15 +206,6 @@ export default {
             }
         };
 
-        const getRooms = async () => {
-            try{
-                const response = await axios.get('/rooms');
-                contacts.value = response.data;
-            }catch (err){
-                console.error(err);
-            }
-        };
-
         const sendMessage = async () => {
             if (newMessage.value.trim() === '') return;
 

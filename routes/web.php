@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\UserLastOnlineTime;
 
-
 Auth::routes();
 
 Route::middleware(['auth', UserLastOnlineTime::class])->group(function () {
@@ -16,8 +15,6 @@ Route::middleware(['auth', UserLastOnlineTime::class])->group(function () {
     Route::get('/', function () {
         return view('welcome');
     })->name('welcome');
-
-
 
     Route::get('/me', function () {
         return response()->json(auth()->user());
@@ -33,8 +30,5 @@ Route::middleware(['auth', UserLastOnlineTime::class])->group(function () {
         ->name('message');
     Route::get('/users/{userId}/room', [RoomController::class, 'getRoomByUser'])
         ->name('rooms.show');
-
-
     Route::get('/search', [SearchController::class, 'index']);
-
 });
