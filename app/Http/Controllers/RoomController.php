@@ -8,17 +8,14 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-    
+
     public function index()
     {
         $currentUserId = auth()->user()->id;
-
-
         $roomsWithRelations = Room::with([
             'lastMessage.user',
             'users'=>fn ($query) => $query->where('user_id', '!=', $currentUserId)
         ])->get();
-
         $rooms = [];
         foreach ($roomsWithRelations as $room) {
             foreach ($room->users as $user) {
