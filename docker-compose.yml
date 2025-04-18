@@ -12,7 +12,7 @@ services:
         depends_on:
             - postgres
         ports:
-            - "8200:80"
+            - "9000:80"
     #        command: >
     #            sh -c "php artisan reverb:start && php artisan queue:listen"
     postgres:
@@ -53,6 +53,7 @@ services:
         networks:
             - chat_network  # Connect to the custom network
     node:
+    
         image: node:22
         container_name: chat_node1
         working_dir: /var/www

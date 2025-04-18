@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-
     public function index()
     {
         $currentUserId = auth()->user()->id;
@@ -41,7 +40,6 @@ class RoomController extends Controller
                 ];
             }
         }
-
         return response()->json($rooms);
     }
     public function getRoomByUser($selectedUserId){
@@ -58,7 +56,6 @@ class RoomController extends Controller
             $room->users()->attach($userId);
             $room->users()->attach($selectedUserId);
         }
-
         return response()->json(['roomId' => $room->id]);
     }
 }
